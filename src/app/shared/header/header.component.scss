@@ -1,0 +1,27 @@
+.logo{
+    font-family: 'Pacifico', cursive;
+    font-size: 40px;
+    letter-spacing: 5px;
+
+    .innerTextSmall{
+        color:#3d3693;
+    }
+
+    .innerTextLarge{
+        color:#e1436f;
+    }
+    .subText{
+        font-family: 'Nunito', sans-serif;
+        font-size: 15px;
+    }
+    
+}
+
+.contact{
+    a{
+        text-decoration: none;
+    }
+    a:hover{
+        text-decoration: revert;
+    }
+}

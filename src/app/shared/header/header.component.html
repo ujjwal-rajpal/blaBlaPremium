@@ -1,0 +1,24 @@
+<div fxLayout="row" fxLayoutAlign="space-evenly center" FxFill.xs="100" fxLayout.lt-sm="column">
+    <span [ngClass]="{'logo':true}">
+        <span [ngClass]="{'innerTextSmall':true}"> bla</span><span [ngClass]="{'innerTextLarge':true}">Bla</span>
+        <div [ngClass]="{'subText': true}">by CodeSolution Insurance Brokers</div>
+    </span>
+
+    <span></span>
+    <div fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="end end" >
+        <div [ngClass]="{'contact': true}" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="end center">
+            <span><a href="mailto:blaBLa.care@codesolutions.com">
+                    <mat-icon aria-hidden="false" aria-label="Example home icon">email</mat-icon>
+                    blaBLa.care@codesolutions.com
+                </a></span> |
+            <span><a href="tel:1800120012">
+                    <mat-icon aria-hidden="false" aria-label="Example call icon">call</mat-icon>
+                    1800120012
+                </a></span>
+        </div>
+        <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="end center">
+            <span>Claims</span>
+            <span>Login</span>
+        </div>
+    </div>
+</div>
