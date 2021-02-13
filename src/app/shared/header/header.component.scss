@@ -17,11 +17,21 @@
     
 }
 
-.contact{
+.fullWidth{
+    @media (max-width:499px){
+        width: 100%;
+    }
+    .contact{
+        a{
+            text-decoration: none;
+        }
+        a:hover{
+            text-decoration: revert;
+        }
+    }
     a{
         text-decoration: none;
     }
-    a:hover{
-        text-decoration: revert;
-    }
 }
+
+

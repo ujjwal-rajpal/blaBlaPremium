@@ -8,6 +8,9 @@
 
 .regCard{
     width: 400px;
+    @media (max-width:499px){
+        width: 250px;
+    }
     .policyLable{
     font-size: 20px;
     font-family: "Nunito", sans-serif;
@@ -34,3 +37,9 @@
     }
 }
 
+.fotter{
+    position: fixed;
+    bottom: 0;
+    z-index: 1000;
+    width: 99%;
+}

@@ -1,0 +1,22 @@
+<mat-card [ngClass]="{'card':true}">
+    <div *ngIf="!thankuPage; else thanksPage">
+        <span [ngClass]="{'trackStatus': true}">
+            <h3>{{checkClaim | titlecase}}</h3>
+        </span>
+        <form [formGroup]="trackForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center stretch">
+            <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                <mat-label>Enter policy number</mat-label>
+                <input matInput placeholder="xxxxxx" formControlName="policyNumber">
+                <mat-error *ngIf="hasError('policyNumber', 'required')">Please enter your policy number</mat-error>
+            </mat-form-field>
+            <button color="primary" mat-raised-button type="submit">Submit</button>
+        </form>
+    </div>
+    <ng-template #thanksPage>
+        <div fxLayout="column" fxLayoutAlign="center center" fxLayoutGap="20px">
+            <span [ngClass]="{'thanksText': true}">Thanks</span>
+            <span [ngClass]="{'contactText': true}">We will contact you shortly!!</span>
+        </div>
+
+    </ng-template>
+</mat-card>

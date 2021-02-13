@@ -1,0 +1,36 @@
+<!-- header -->
+<app-header></app-header>
+
+<div fxLayout="row" fxLayoutAlign="space-evenly stretch" >
+
+    <div fxLayout="column" fxLayoutAlign="center start" fxFlex="30" fxLayoutGap="20px" [ngClass]="{'claims': true}" >
+        <div *ngIf="checkClaim && checkClaim != undefined else claimDashboard">
+            <app-check-claim></app-check-claim>
+        </div>
+        <ng-template #claimDashboard>
+            <span [ngClass]="{'heading':true}">
+                <h3>Claim Journey</h3>
+            </span>
+            <span>
+                We Hope Everything Is Fine.
+            </span>
+            <span>
+                Do You Have A Claim Request To Make, Or Already Have A Claim Registered With Us And Wish To Track Its Progress?
+            </span>
+            <span>
+                <a [routerLink]="['/claims']" [queryParams]="{ type: 'raise-a-claim' }" >Click</a> Here To Raise A Claim.
+            </span>
+            <span>
+                If You Already Have A Claim Raised, <a [routerLink]="['/claims']" [queryParams]="{ type: 'track-status' }">Click Here</a> To Track It's Status.
+            </span>
+        </ng-template>
+    </div>
+    
+    <div fxLayout="column" fxLayoutAlign="space-evenly center" fxFlex="60" fxFill >
+        <img alt="claims" src="../../../assets/claims.svg">
+    </div>
+</div>
+
+<div fxLayout="row" fxLayoutAlign=" center center" [ngClass]="{'fotter': true}"  >
+    <app-footer fxFill="100%"></app-footer>
+</div>

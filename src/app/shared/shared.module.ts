@@ -6,10 +6,11 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { MyMaterialModule } from './material.module';
 import { HeaderComponent } from './header/header.component';
 import { SharedRoutingModule } from './shared-routing.module';
+import { FooterComponent } from './footer/footer.component';
 // import { CustomValidator } from './custom-validator';
 
 @NgModule({
-  declarations: [HeaderComponent],
+  declarations: [HeaderComponent, FooterComponent],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -20,6 +21,7 @@ import { SharedRoutingModule } from './shared-routing.module';
   ],
   exports: [
     ReactiveFormsModule,
+    FooterComponent,
     FlexLayoutModule,
     MyMaterialModule,
     HeaderComponent,

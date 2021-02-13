@@ -27,11 +27,12 @@ export class DashbordComponent implements OnInit {
       CustomValidator.Pattern_Validator(/[A-Z]{2}[0-9]{2}[A-Z]{1,2}[0-9]{4}$/, { hasPattern: true }),
     ])
   });
-
+  // brand form
   brandForm = new FormGroup({
     brandName: new FormControl('', [
       Validators.required,
     ]),
+    // car name
     carName: new FormControl('', [
       Validators.required,
     ]),
@@ -39,6 +40,7 @@ export class DashbordComponent implements OnInit {
       Validators.required,
     ])
   });
+  // policy form
   policyForm = new FormGroup({
     purchaseDate: new FormControl('', [
       Validators.required,
@@ -48,6 +50,7 @@ export class DashbordComponent implements OnInit {
     ]),
     mobile: new FormControl('', [
       Validators.required,
+      CustomValidator.Pattern_Validator(/^[789]\d{9}/, { mobilePattern: true }),
     ])
   });
   ngOnInit(): void {
@@ -71,7 +74,9 @@ public hasError = (controlName: string, errorName: string) =>{
   }
 }
 
-
+/**
+ * Subtit function runs every time form is sunmitted
+ */
 
 onSubmit(){
   if(this.vechicleReg){
@@ -95,17 +100,12 @@ onSubmit(){
   } 
 }
 
-validateRegNumber(){
-  if(!this.regForm.value){
-    return
-  }
-  this.regForm.value.regNo = this.regForm.value.regNo.toUpperCase();
-  let regRegx = new RegExp('');
-  let regNum= this.regForm.value.regNo
-  this.patternMatch = regRegx.exec(regNum)
-  // console.log(this.patternMatch)  
-}
-
+/**
+ * Used to get value of form control abjects
+ * 
+ * @param formName 
+ * @param controlName 
+ */
 getControlvalue(formName:string, controlName){
   if(formName == 'regForm'){
     return this.regForm.value.regNo
@@ -114,10 +114,16 @@ getControlvalue(formName:string, controlName){
     return `${value}`
   }
 }
+/**
+ * calculate price
+ */
 getPrice(){
-return  1000
+let price = Math.floor(1000 + Math.random() * 9000);
+return  price;
 }
-
+/**
+ * display thanks card once every function completed
+ */
 thanksCard(){
   this.confirmation = false
   this.thanks = true;

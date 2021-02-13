@@ -4,8 +4,8 @@
         <div [ngClass]="{'subText': true}">by CodeSolution Insurance Brokers</div>
     </span>
 
-    <span></span>
-    <div fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="end end" >
+    
+    <div fxLayout="column" fxLayoutGap="2px" fxLayoutAlign="end end" [ngClass]="{'fullWidth': true}">
         <div [ngClass]="{'contact': true}" fxLayout.lt-sm="column" fxLayoutAlign.lt-sm="end center">
             <span><a href="mailto:blaBLa.care@codesolutions.com">
                     <mat-icon aria-hidden="false" aria-label="Example home icon">email</mat-icon>
@@ -17,8 +17,9 @@
                 </a></span>
         </div>
         <div fxLayout="row" fxLayoutGap="15px" fxLayoutAlign="end center">
-            <span>Claims</span>
-            <span>Login</span>
+            <span><a [routerLink]="['/dashboard']"> Dashboard</a></span>
+            <span><a [routerLink]="['/claims']"> Claims</a></span>
+            <span>Guest</span>
         </div>
     </div>
 </div>

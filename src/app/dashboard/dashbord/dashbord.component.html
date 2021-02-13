@@ -2,7 +2,7 @@
 <app-header></app-header>
 <!-- dashboard Content -->
 
-<div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="40px">
+<div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="20px">
     <div fxLayout="row" fxFlex="100"></div>
     <div [ngClass]="{'tagLine': true}">
         Let’s Get You An Awesome Price
@@ -17,8 +17,8 @@
 
                     <!-- reg no field -->
                     <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
-                        <input matInput #regNo placeholder="HR10T01010" formControlName="regNo"
-                            (focusout)="validateRegNumber()" (input)="regNo.value = regNo.value.toUpperCase()">
+                        <input matInput #regNo placeholder="HR10PT0101" formControlName="regNo"
+                             (input)="regNo.value = regNo.value.toUpperCase()">
                         <mat-error *ngIf="hasError('regNo', 'required')">Please enter your vehicle registration number</mat-error>
                         <mat-error *ngIf="hasError('regNo', 'hasPattern')">Enter valid registration number</mat-error>
                     </mat-form-field>
@@ -37,14 +37,6 @@
                     <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
                         <input matInput #brandName placeholder="Enter Brand Name" formControlName="brandName"
                              (input)="brandName.value = brandName.value.toUpperCase()">
-                             <!-- <mat-label>Select Brand Name</mat-label>
-                             <select matNativeControl  formControlName="brandName" >
-                               <option value="" selected></option>
-                               <option value="volvo">Volvo</option>
-                               <option value="saab" disabled>Saab</option>
-                               <option value="mercedes">Mercedes</option>
-                               <option value="audi">Audi</option>
-                             </select> -->
                         <mat-error *ngIf="hasError('brandName', 'required')">Please Enter Make
                         </mat-error>
                     </mat-form-field>
@@ -52,14 +44,6 @@
                     <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
                         <input matInput #carName placeholder="Enter Car Name" formControlName="carName"
                              (input)="carName.value = carName.value.toUpperCase()">
-                             <!-- <mat-label>Enter Car Name</mat-label>
-                             <select matNativeControl  formControlName="carName" >
-                               <option value="" selected></option>
-                               <option value="volvo">Volvo</option>
-                               <option value="saab" disabled>Saab</option>
-                               <option value="mercedes">Mercedes</option>
-                               <option value="audi">Audi</option>
-                             </select> -->
                         <mat-error *ngIf="hasError('carName', 'required')">Please Enter Model
                         </mat-error>
                     </mat-form-field>
@@ -89,15 +73,16 @@
                         </mat-form-field>
                         <!-- car anem field -->
                         <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
-                            <input matInput placeholder="mm/yyyy" formControlName="previousPolicyDate">
+                            <input matInput placeholder="mm/yyyy" formControlName="previousPolicyDate" >
                             <mat-error *ngIf="hasError('previousPolicyDate', 'required')">Please Enter Previous Policy End Date
                             </mat-error>
                         </mat-form-field>
                         <!-- varient name field -->
                         <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
                             <input matInput  placeholder="012345789" formControlName="mobile">
-                            <mat-error *ngIf="hasError('mobile', 'required')">Please Enter Your Mobile Number
-                            </mat-error>
+                            <mat-error *ngIf="hasError('mobile', 'required')">Please Enter Your Mobile Number</mat-error>
+                            <mat-error *ngIf="hasError('mobile', 'mobilePattern')">Enter valid Mobile Number</mat-error>
+                            
                         </mat-form-field>
                         <button color="primary" mat-raised-button type="submit">See Price</button>
                     </form>
@@ -157,4 +142,7 @@
         </mat-card>
     </div>
 
+</div>
+<div fxLayout="row" fxLayoutAlign=" center center" [ngClass]="{'fotter': true}"  >
+    <app-footer fxFill="100%"></app-footer>
 </div>
