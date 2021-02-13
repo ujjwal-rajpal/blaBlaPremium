@@ -1,0 +1,160 @@
+<!-- header -->
+<app-header></app-header>
+<!-- dashboard Content -->
+
+<div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="40px">
+    <div fxLayout="row" fxFlex="100"></div>
+    <div [ngClass]="{'tagLine': true}">
+        Let’s Get You An Awesome Price
+    </div>
+    <div>
+        <mat-card [ngClass]="{'regCard': true}">
+            <mat-card-content *ngIf="vechicleReg == true; else modelDetails">
+                <span [ngClass]="{'policyLable': true}">
+                    Your Car Registration Number
+                </span>
+                <form [formGroup]="regForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center stretch">
+
+                    <!-- reg no field -->
+                    <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                        <input matInput #regNo placeholder="HR10T01010" formControlName="regNo"
+                            (focusout)="validateRegNumber()" (input)="regNo.value = regNo.value.toUpperCase()">
+                        <mat-error *ngIf="hasError('regNo', 'required')">Please enter your vehicle registration number</mat-error>
+                        <mat-error *ngIf="hasError('regNo', 'hasPattern')">Enter valid registration number</mat-error>
+                    </mat-form-field>
+                    <button color="primary" mat-raised-button type="submit">Get Price</button>
+                </form>
+            </mat-card-content>
+            <!-- model template -->
+            <ng-template #modelDetails>
+                <mat-card-content *ngIf="brand == true; else policyDetails" >
+                <span [ngClass]="{'policyLable': true}">
+                    What Brand Is Your Car?
+                </span>
+                <form [formGroup]="brandForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center stretch">
+
+                    <!-- Brand name field -->
+                    <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                        <input matInput #brandName placeholder="Enter Brand Name" formControlName="brandName"
+                             (input)="brandName.value = brandName.value.toUpperCase()">
+                             <!-- <mat-label>Select Brand Name</mat-label>
+                             <select matNativeControl  formControlName="brandName" >
+                               <option value="" selected></option>
+                               <option value="volvo">Volvo</option>
+                               <option value="saab" disabled>Saab</option>
+                               <option value="mercedes">Mercedes</option>
+                               <option value="audi">Audi</option>
+                             </select> -->
+                        <mat-error *ngIf="hasError('brandName', 'required')">Please Enter Make
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- car anem field -->
+                    <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                        <input matInput #carName placeholder="Enter Car Name" formControlName="carName"
+                             (input)="carName.value = carName.value.toUpperCase()">
+                             <!-- <mat-label>Enter Car Name</mat-label>
+                             <select matNativeControl  formControlName="carName" >
+                               <option value="" selected></option>
+                               <option value="volvo">Volvo</option>
+                               <option value="saab" disabled>Saab</option>
+                               <option value="mercedes">Mercedes</option>
+                               <option value="audi">Audi</option>
+                             </select> -->
+                        <mat-error *ngIf="hasError('carName', 'required')">Please Enter Model
+                        </mat-error>
+                    </mat-form-field>
+                    <!-- varient name field -->
+                    <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                        <input matInput #varientName placeholder="variant" formControlName="varientName"
+                             (input)="varientName.value = varientName.value.toUpperCase()">
+                        <mat-error *ngIf="hasError('varientName', 'required')">Please Enter variant
+                        </mat-error>
+                    </mat-form-field>
+                    <button color="primary" mat-raised-button type="submit">Continue</button>
+                </form>
+                </mat-card-content>
+            </ng-template>
+            <ng-template #policyDetails>
+                <mat-card-content *ngIf="policy == true; else price" >
+                    <span [ngClass]="{'policyLable': true}">
+                    Confirm Your Details And See Your Price
+                    </span>
+                    <form [formGroup]="policyForm" (ngSubmit)="onSubmit()" fxLayout="column" fxLayoutAlign="center stretch">
+    
+                        <!-- Brand name field -->
+                        <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                            <input matInput placeholder="mm/yyyy" formControlName="purchaseDate">
+                            <mat-error *ngIf="hasError('purchaseDate', 'required')">Purchase Date Is Required
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- car anem field -->
+                        <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                            <input matInput placeholder="mm/yyyy" formControlName="previousPolicyDate">
+                            <mat-error *ngIf="hasError('previousPolicyDate', 'required')">Please Enter Previous Policy End Date
+                            </mat-error>
+                        </mat-form-field>
+                        <!-- varient name field -->
+                        <mat-form-field [ngClass]="{'loginPaddingFields': true}" appearance="outline">
+                            <input matInput  placeholder="012345789" formControlName="mobile">
+                            <mat-error *ngIf="hasError('mobile', 'required')">Please Enter Your Mobile Number
+                            </mat-error>
+                        </mat-form-field>
+                        <button color="primary" mat-raised-button type="submit">See Price</button>
+                    </form>
+                    </mat-card-content>
+            </ng-template>
+            <ng-template #price>
+                <mat-card-content *ngIf="confirmation == true; else thankuCard">
+                    
+                    <div fxLayout="column"  fxLayoutGap="10px" [ngClass]="{'confirmation': true}">
+                        <span [ngClass]="{'policyLable': true}" >
+                            Confirmation!!
+                            </span>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Registration No.</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">{{getControlvalue('regForm','regNo')}}</span>
+                      </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+                            <span fxFlex="40%">Owner Name</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">XXXXXXXX</span>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Address</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">xxxx</span>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Maker Name</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">{{getControlvalue('brandForm','brandName')}}</span>
+                        </div>
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Maker Class</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">{{getControlvalue('brandForm','carName')}}</span>
+                        </div>    
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Varient</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">{{getControlvalue('brandForm','varientName')}}</span>
+                        </div>  
+                        <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px" >
+                            <span fxFlex="40%">Policy Number</span>
+                            <span fxFlex="40%" [ngClass]="{'confirmationValue': true}">xxxxxx</span>
+                        </div>    
+                        <div fxLayout="row" fxLayoutAlign="start center" >
+                            <span >This Certificate is valid From</span>
+                        </div >
+                        <div fxLayoutAlign="end center" [ngClass]="{'confirmationValue': true}" >{{today | date:'yyyy/MM/dd'}} - {{oneYearLater | date:'yyyy/MM/dd'}}</div>
+                        <button color="primary" mat-raised-button (click)="thanksCard()">Place order and Pay( {{getPrice()}} )</button>
+                    </div>
+                </mat-card-content>
+            </ng-template>
+            <ng-template #thankuCard>
+            <mat-card-content [ngClass]="{'thanksCard': true}">
+                <div fxLayout="column" fxLayoutAlign="center center"   fxLayoutGap="30px" fxFill>
+                    <span [ngClass]="{'thanksText': true}">  Thanks for your purchase</span>
+                    <span>Your <strong>Policy Number </strong>is <strong>xxxx</strong></span>
+                </div>
+            </mat-card-content>
+            </ng-template>
+        </mat-card>
+    </div>
+
+</div>

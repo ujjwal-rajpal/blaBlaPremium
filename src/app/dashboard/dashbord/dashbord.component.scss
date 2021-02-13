@@ -1,0 +1,36 @@
+.tagLine{
+    font-family: 'Montserrat', sans-serif;
+    font-size: 20px;
+    color: #3d3693;
+
+   
+}
+
+.regCard{
+    width: 400px;
+    .policyLable{
+    font-size: 20px;
+    font-family: "Nunito", sans-serif;
+    color: #3d3693;
+    }
+}
+
+.confirmation{
+    margin-bottom: 10px;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: "Nunito", sans-serif;
+    .confirmationValue{
+        color: grey;
+        font-size: 15px;
+    }
+}
+
+.thanksCard{
+    height: 200px;
+    .thanksText{
+        font-size: 20px;
+        color: #3d3693;
+    }
+}
+

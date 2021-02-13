@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 
 @NgModule({
-    imports:[RouterModule],
+    imports:[RouterModule ],
     exports:[RouterModule]
 })
 
